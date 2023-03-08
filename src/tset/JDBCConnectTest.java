@@ -1,4 +1,4 @@
-package com.KoreaIT.example.JAM;
+package tset;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,7 +25,6 @@ public class JDBCConnectTest {
 					conn.close();
 				}
 			} catch (SQLException e) {
-				
 				e.printStackTrace();
 			}
 		}
