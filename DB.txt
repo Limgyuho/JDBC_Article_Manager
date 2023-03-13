@@ -1,7 +1,9 @@
+#DB 생성,삭제,사용
 DROP DATABASE IF EXISTS jdc_article_manager;
 CREATE DATABASE jdc_article_manager;
 USE jdc_article_manager;
 
+#article 테이블 생성
 CREATE TABLE article(
 	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	regDate DATETIME NOT NULL,
@@ -11,14 +13,37 @@ CREATE TABLE article(
 );
 
 
+#member 테이블 생성
+CREATE TABLE `member`(
+	id INT UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	regDate DATETIME NOT NULL,
+	updateDate DATETIME NOT NULL,
+	#데이터 타입의 크기는 어느정도의 크기인지 예상하고 정한다
+	#크기가 큰다면 속도의 문제가 발생할수 있다
+	loginId VARCHAR(50) NOT NULL,
+	loginPw VARCHAR(50) NOT NULL,
+	`name` VARCHAR(50) NOT NULL
+);
+
+#멤버 테스트 데이터
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+loginId = 'test',
+loginPw ='test',
+`name` = 'test';
+#article 테스트 데이터 생성
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
 title = CONCAT('제목',RAND()),
 `body` =CONCAT('제목',RAND());
 
-
+#아티클 멈베 테이블 구조확인
 DESC article;
+DESC `member`;
+#아티클 멈베 구조확인
+SELECT * FROM article;
 SELECT * FROM article;
 
 
