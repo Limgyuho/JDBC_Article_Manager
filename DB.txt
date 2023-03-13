@@ -47,4 +47,10 @@ SELECT * FROM article;
 SELECT * FROM article;
 
 
+#아래의 조건식의 대한 결과를 보여준다 있으면 1 없으면 0
+#0과 1을  false true로 보아도 된다
+#COUNT(*)를 COUNT(loginId)로 대체 해도 된다.
+SELECT COUNT(*) > 0
+FROM `member`
+WHERE loginId = 'test1'
 
