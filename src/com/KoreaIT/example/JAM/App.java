@@ -3,16 +3,10 @@ package com.KoreaIT.example.JAM;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
-import com.KoreaIT.example.JAM.util.DBUtil;
-import com.KoreaIT.example.JAM.util.SecSql;
-
-import Controller.ArticleController;
-import Controller.MemberController;
+import com.KoreaIT.example.JAM.controller.ArticleController;
+import com.KoreaIT.example.JAM.controller.MemberController;
 
 public class App {
 	public void run() {
@@ -27,28 +21,29 @@ public class App {
 
 			conn = DriverManager.getConnection(url, "root", "");
 
-			
-			ArticleController article = new ArticleController(conn ,sc);
-			MemberController member = new MemberController(conn,sc);
+			ArticleController articleController = new ArticleController(conn, sc);
+			MemberController memberController = new MemberController(conn, sc);
 			
 			while (true) {
 				System.out.printf("명령어) ");
 				String cmd = sc.nextLine().trim();
 
 				if (cmd.equals("member join")) {
-					MemberController.doJoin();
+					memberController.doJoin();
 				} else if (cmd.equals("article write")) {
-					ArticleController.doWrtie();
+					articleController.doWrite();
 				} else if (cmd.equals("article list")) {
-					ArticleController.showList();
+					articleController.showList();
 				} else if (cmd.startsWith("article detail ")) {
-					ArticleController.showDetail(cmd);
+					articleController.showDetail(cmd);
 				} else if (cmd.startsWith("article modify ")) {
-					ArticleController.doModify(cmd);
+					articleController.doModify(cmd);
 				} else if (cmd.startsWith("article delete ")) {
-					ArticleController.doDelete(cmd);
+					articleController.doDelete(cmd);
+				} else {
+					System.out.println("존재하지 않는 명령어입니다");
+					continue;
 				}
-
 				if (cmd.equals("exit")) {
 					System.out.println("== 프로그램 종료 ==");
 					break;

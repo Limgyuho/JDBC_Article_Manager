@@ -1,4 +1,4 @@
-package Service;
+package com.KoreaIT.example.JAM.service;
 
 import java.sql.Connection;
 
