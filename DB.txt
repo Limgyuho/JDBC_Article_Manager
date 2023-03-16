@@ -25,26 +25,36 @@ CREATE TABLE `member`(
 	`name` VARCHAR(50) NOT NULL
 );
 
-#멤버 테스트 데이터
+#article 테이블에 회원번호 컬럼 추가
+ALTER TABLE article ADD COLUMN memberId INT UNSIGNED NOT NULL AFTER updateDAte;
+
+
+# member 테이블의 loginId컬럼 UNIQUE 추가
+ALTER TABLE `member` MODIFY COLUMN loginId VARCHAR(50) NOT NULL UNIQUE;
+
+# article 테스트 데이터
 INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+title = CONCAT('제목', RAND()),
+`body` = CONCAT('내용', RAND());
+
+# member 테스트 데이터
+INSERT INTO `member`
 SET regDate = NOW(),
 updateDate = NOW(),
 loginId = 'test',
-loginPw ='test',
+loginPw = 'test',
 `name` = 'test';
-#article 테스트 데이터 생성
-INSERT INTO article
-SET regDate = NOW(),
-updateDate = NOW(),
-title = CONCAT('제목',RAND()),
-`body` =CONCAT('제목',RAND());
 
-#아티클 멈베 테이블 구조확인
+# article, member 테이블 구조 확인
 DESC article;
 DESC `member`;
-#아티클 멈베 구조확인
+
+# article, member 테이블 조회
 SELECT * FROM article;
-SELECT * FROM article;
+ 
 
 
 #아래의 조건식의 대한 결과를 보여준다 있으면 1 없으면 0
@@ -52,5 +62,4 @@ SELECT * FROM article;
 #COUNT(*)를 COUNT(loginId)로 대체 해도 된다.
 SELECT COUNT(*) > 0
 FROM `member`
-WHERE loginId = 'test1'
-
+WHERE loginId = 'aaa'

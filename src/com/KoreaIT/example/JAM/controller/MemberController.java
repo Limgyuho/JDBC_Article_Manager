@@ -139,27 +139,23 @@ public class MemberController {
 				continue;
 			}
 
-			//로그인을 한상태로 만들어준다
-			Session.login(member);			
-			
+			// 로그인을 한상태로 만들어준다
+			Session.login(member);
+
 			System.out.printf("%s님 환영합니다\n", member.name);
-			
-			
-			
-			
 
 			break;
 		}
 	}
 
 	public void doLogout() {
-		
-		//현재 로그인 상태인지 
+
+		// 현재 로그인 상태인지
 		if (Session.isLogined() == false) {
 
 			System.out.println("로그인후 이용해주세요");
 			return;
-			
+
 		}
 		Session.logout();
 		System.out.println("로그아웃 상태입니다");
@@ -170,10 +166,10 @@ public class MemberController {
 
 			System.out.println("로그인후 이용해주세요");
 			return;
-			
+
 		}
-		System.out.printf("로그인 아이디 :%s\n" ,Session.loginedMember.loginId);		
-		System.out.printf("가입일자 :%s\n" ,Session.loginedMember.regDate);		
-		System.out.printf("이름 :%s\n" ,Session.loginedMember.name);		
+		System.out.printf("로그인 아이디 :%s\n", Session.loginedMember.loginId);
+		System.out.printf("가입일자 :%s\n", Session.loginedMember.regDate);
+		System.out.printf("이름 :%s\n", Session.loginedMember.name);
 	}
 }
