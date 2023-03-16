@@ -28,3 +28,5 @@ public class Session {
 		return loginedMemberId != -1;
 	}
 }
+
+
