@@ -63,3 +63,8 @@ SELECT * FROM article;
 SELECT COUNT(*) > 0
 FROM `member`
 WHERE loginId = 'aaa'
+
+
+
+#조회수 컬럼 추가
+ALTER TABLE article ADD COLUMN viewcount INT UNSIGNED NOT NULL AFTER `body`;

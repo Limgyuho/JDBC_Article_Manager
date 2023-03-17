@@ -17,12 +17,12 @@ public class ArticleService {
 	}
 
 	public int doWrite(String title, String body, int loginedMemberId) {
-		return articleDao.doWrite(title, body,loginedMemberId);
+		return articleDao.doWrite(title, body, loginedMemberId);
 	}
 	
-	public List<Article> getArticles(){
+	public List<Article> getArticles(String searchKeyword){
 		
-		List<Map<String, Object>> articleListMap = articleDao.getArticles();
+		List<Map<String, Object>> articleListMap = articleDao.getArticles(searchKeyword);
 		
 		List<Article> articles = new ArrayList<>();
 		
@@ -54,5 +54,9 @@ public class ArticleService {
 
 	public void doDelete(int id) {
 		articleDao.doDelete(id);
+	}
+
+	public int increaseVCnt(int id) {
+		return articleDao.increaseVCnt(id);
 	}
 }
