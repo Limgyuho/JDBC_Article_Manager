@@ -17,6 +17,7 @@ public class MemberController {
 		this.sc = sc;
 	}
 
+	
 	public void doJoin() {
 
 		if (Session.isLogined()) {
